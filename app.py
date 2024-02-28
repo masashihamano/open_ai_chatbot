@@ -1,3 +1,4 @@
+%%writefile app.py
 
 import streamlit as st
 import openai
@@ -8,7 +9,7 @@ openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 # st.session_stateを使いメッセージのやりとりを保存
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "system", "content": "あなたは優秀なプログラマーのアシスタントAIです。"}
+        {"role": "system", "content": st.secrets.AppSettings.chatbot_setting}
     ]
 
 # チャットボットとやりとりする関数
